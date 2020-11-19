@@ -1,0 +1,10 @@
+{
+    "dataBinding": {
+        "/webapp/view/Page1.view.xml": {
+            "entitySet": "/MPDisplaySet"
+        }, 
+        "/webapp/view/Page3.view.xml": {
+            "entitySet": "/MPDisplaySet"
+        } 
+    }
+}

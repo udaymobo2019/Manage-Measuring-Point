@@ -1,0 +1,64 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.ba293bd41-us_1.manageMeasuringPoint.controller.Page1" xmlns="sap.m">
+	<Page title="" showHeader="true" showFooter="false" showNavButton="false" navButtonPress="_onPageNavButtonPress">
+		<customHeader>
+			<Bar>
+				<contentRight>
+					<Button id="Dashboard" text="Back to Dashboard" icon="" press="HomeButton" tooltip="Back"/>
+				</contentRight>
+				<contentMiddle></contentMiddle>
+				<contentLeft>
+					<Title level="H2" tooltip="" text="Measuring Point List"/>
+				</contentLeft>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Toolbar enabled="true" visible="true" width="" design="Solid">
+				<content>
+					<SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%" liveChange="search"/>
+				</content>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List id="List" mode="SingleSelectMaster" width="100%" showNoData="false" noDataText="the data is being loaded..." headerText="" footerText="" backgroundDesign="Solid" showSeparators="All"
+				growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" selectionChange="_onObjectListItemPress" 
+				items="{path:'/listdata', templateShareable:true}"  busy="{oGlobalModel>/deLay}" busyIndicatorDelay="0">  
+				<!--<infoToolbar/>-->
+				<!--<headerToolbar   itemPress="_onObjectListItemPress>-->
+				<!--	<Toolbar enabled="true" visible="true" width="" design="Solid">-->
+				<!--		<content>-->
+				<!--			<SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%" liveChange="search"/>-->
+				<!--		</content>-->
+				<!--	</Toolbar>-->
+				<!--</headerToolbar>-->
+				<items>
+					<ObjectListItem intro="{desc}" title="{point}" icon="sap-icon://measure" number="{sta}" numberUnit="" numberState="None" type="Active"
+						selected="false">
+						<attributes>
+							<ObjectAttribute id="fun" text="Func.Loc.: {funlno} {funcdes}" active="false" visible="{=${flag} === '' ? true:false}"/>
+							<ObjectAttribute id="equ" text="Equip: {eqno} {descr}" visible="{=${flag} === 'X' ? true:false}"/>
+							<!--<ObjectAttribute title="Measurement Position" text="{posi}" active="false" visible="true"/>-->
+						</attributes>
+						<!--<firstStatus>-->
+						<!--    <ObjectStatus title="Measurement Category" text="{cate}" state="None" visible="false"/>-->
+						<!--</firstStatus>-->
+						<secondStatus>
+							<ObjectStatus title="Meas.Cat." text="{cate}" state="None" visible="true"/>
+						</secondStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content/>
+			</OverflowToolbar>
+		</footer>
+		<headerContent>
+			<!--<Button text="" type="Default" icon="{= ${FclRouter>/expandIcon/img}}" iconFirst="true" width="auto" enabled="true"-->
+			<!--	visible="{= ${fclButton>/visible}}" tooltip="{= ${FclRouter>/expandIcon/tooltip}}" iconDensityAware="false" class="fcl-resizeButton-js"-->
+			<!--	press="_onExpandButtonPress"/>-->
+			<Button text="" type="Default" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="{= ${fclButton>/visible}}"
+				tooltip="Close Column" iconDensityAware="false" class="fcl-closeButton-js" press="_onCloseButtonPress"/>
+		</headerContent>
+	</Page>
+</mvc:View>

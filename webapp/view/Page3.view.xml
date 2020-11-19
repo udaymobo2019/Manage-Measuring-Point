@@ -1,0 +1,601 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.ba293bd41-us_1.manageMeasuringPoint.controller.Page3"
+	xmlns:uxap="sap.uxap" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true"
+		subSectionLayout="TitleOnTop">
+		<uxap:headerContent/>
+		<uxap:headerTitle>
+			<uxap:ObjectPageHeader id="objh" objectImageURI="sap-icon://measure" objectTitle="" objectSubtitle="" objectImageShape="Circle"
+				isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
+				<uxap:actions/>
+				<uxap:navigationBar>
+					<Bar design="Auto">
+						<contentLeft/>
+						<contentMiddle/>
+						<contentRight>
+							<!--<Button text="" type="Default" icon="{= ${FclRouter>/expandIcon/img}}" iconFirst="true" width="auto" enabled="true" visible="{= ${fclButton>/visible}}" tooltip="{= ${FclRouter>/expandIcon/tooltip}}" iconDensityAware="false" class="fcl-resizeButton-js" press="_onExpandButtonPress"/>-->
+							<Button text="" type="Default" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="{= ${fclButton>/visible}}"
+								tooltip="Close Column" iconDensityAware="false" class="fcl-closeButton-js" press="_onCloseButtonPress"/>
+						</contentRight>
+					</Bar>
+				</uxap:navigationBar>
+			</uxap:ObjectPageHeader>
+		</uxap:headerTitle>
+		<uxap:sections>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="General" mode="Expanded">
+						<uxap:blocks>
+							<form:Form width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="General Data" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Description" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="description" value="" placeholder="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto"
+														valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="40"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Position" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="pos" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="20"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Characteristic" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="char" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Code Group" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox items="" value="" id="codegrp" width="100%" editable="false" selectionChange="codechan">
+														<!--<items>
+																	<core:Item key="{FunctionalLocation}" text="{Text}"/>
+																</items>-->
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							
+							<form:Form width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="Measuring Range Limits" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Lower Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="lowerrange" value="" type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" liveChange="lowrng"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Upper Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="upperrange" value="" type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" liveChange="uprng"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Characteristic Unit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="unit" value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" editable="false"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							
+							<!--<form:Form id="point" width="50%" editable="true" visible="false">-->
+							<!--	<form:title>-->
+							<!--		<core:Title text="Point Data" level="Auto"/>-->
+							<!--	</form:title>-->
+							<!--	<form:formContainers>-->
+							<!--		<form:FormContainer visible="true">-->
+							<!--			<form:formElements>-->
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Target Value" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="target" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+											<!--			required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Long Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<TextArea id="longtext" rows="2" cols="20" maxLength="40" wrapping="None" editable="false" required="false" valueStateText="Invalid entry"-->
+											<!--			visible="true"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+							<!--			</form:formElements>-->
+							<!--			<form:title/>-->
+							<!--		</form:FormContainer>-->
+							<!--	</form:formContainers>-->
+							<!--	<form:layout>-->
+							<!--		<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>-->
+							<!--	</form:layout>-->
+							<!--</form:Form>-->
+							
+							
+							<form:Form id="point" width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="Point Data" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Description" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="description2" value="" placeholder="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto"-->
+											<!--			valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Target Value" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<!--<Input id="target" value=" " type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+													<!--	required="false" valueStateText="Invalid entry" maxLength="2" liveChange="tarval"/>-->
+													<Input id="target" value="" type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" liveChange="tarval"/>
+													
+													
+													
+													
+												</form:fields>
+											</form:FormElement>
+											
+											
+											
+											
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Position" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="pos2" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="20"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Characteristic" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="char2" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Code Group" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox items="" value="" id="codegrp2" width="100%" editable="false" selectionChange="codechan">
+														<!--<items>
+																	<core:Item key="{FunctionalLocation}" text="{Text}"/>
+																</items>-->
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							
+							<form:Form id="point2" width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="" />
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Lower Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="lowerrange2" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+											<!--			required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Long Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<TextArea id="longtext" rows="1" cols="20" maxLength="40" wrapping="None" editable="false" required="false" valueStateText="Invalid entry"
+														visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Upper Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="upperrange2" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Unit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="unit2" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+									<!--</form:title>-->
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+						
+							
+							<!--<form:Form id="count" width="50%" editable="true" visible="false">-->
+							<!--	<form:title>-->
+							<!--		<core:Title text="Counter Data" level="Auto"/>-->
+							<!--	</form:title>-->
+							<!--	<form:formContainers>-->
+							<!--		<form:FormContainer visible="true">-->
+							<!--			<form:formElements>-->
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Counter Overflow Reading" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"-->
+											<!--			visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="overflow" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+											<!--			required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Annual Estimate" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="estimate" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+											<!--			required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Long Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<TextArea id="text2" rows="2" cols="20" maxLength="40" wrapping="None" editable="false" required="false" valueStateText="Invalid entry"-->
+											<!--			visible="true"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+							<!--			</form:formElements>-->
+							<!--			<form:title/>-->
+							<!--		</form:FormContainer>-->
+							<!--	</form:formContainers>-->
+							<!--	<form:layout>-->
+							<!--		<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>-->
+							<!--	</form:layout>-->
+							<!--</form:Form>-->
+							
+							
+							
+							<form:Form id="count" width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="Counter Data" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Description" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="description3" value="" placeholder="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto"-->
+											<!--			valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Counter Overflow Reading" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+														visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="overflow" value="" type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" liveChange="countover"/>
+												</form:fields>
+											</form:FormElement>
+											
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Annual Estimate" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="estimate" value="" type="Number" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0" liveChange="annesti"/>
+												</form:fields>
+											</form:FormElement>
+											
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Characteristic" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="char3" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Code Group" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<ComboBox items="" value="" id="codegrp3" width="100%" editable="false" selectionChange="codechan">
+														<!--<items>
+																	<core:Item key="{FunctionalLocation}" text="{Text}"/>
+																</items>-->
+													</ComboBox>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							
+							<form:Form id="count2" width="100%" editable="true" visible="true">
+								<form:title>
+									<core:Title text="" level="Auto"/>
+								</form:title>
+								<form:formContainers>
+									<form:FormContainer visible="true">
+										<form:formElements>
+											<!--<form:FormElement visible="true">-->
+											<!--	<form:label>-->
+											<!--		<Label text="Lower Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>-->
+											<!--	</form:label>-->
+											<!--	<form:fields>-->
+											<!--		<Input id="lowerrange3" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"-->
+											<!--			required="false" valueStateText="Invalid entry" maxLength="0"/>-->
+											<!--	</form:fields>-->
+											<!--</form:FormElement>-->
+											
+											<form:FormElement visible="true">
+												<form:label>
+													<Label text="Long Text" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<TextArea id="text2" rows="1" cols="20" maxLength="40" wrapping="None" editable="false" required="false" valueStateText="Invalid entry"
+														visible="true"/>
+												</form:fields>
+											</form:FormElement>
+											
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Upper Range Limit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="upperrange3" value="" type="Text" showValueHelp="false" editable="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+											<form:FormElement visible="false">
+												<form:label>
+													<Label text="Unit" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</form:label>
+												<form:fields>
+													<Input id="unit3" value="" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
+														required="false" valueStateText="Invalid entry" maxLength="0"/>
+												</form:fields>
+											</form:FormElement>
+										</form:formElements>
+										<form:title/>
+									</form:FormContainer>
+								</form:formContainers>
+								<form:layout>
+									<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+								</form:layout>
+							</form:Form>
+							
+	
+							
+							
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+					<uxap:ObjectPageSubSection title="" mode="Expanded">
+						<uxap:blocks/>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="History" mode="Expanded">
+						<uxap:blocks>
+							<Table id="tab1" width="100%" noDataText="No Data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
+								growingScrollToLoad="true">
+								<infoToolbar>
+									<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+										<content>
+											<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</content>
+									</Toolbar>
+								</infoToolbar>
+								<headerToolbar>
+								<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+									<content>
+										<Title text="Recent Measuring Documents" titleStyle="Auto" width="100%" textAlign="Begin" visible="true"/>
+										<ToolbarSpacer width=""/>
+									</content>
+								</OverflowToolbar>
+								
+								</headerToolbar>
+								<columns>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Doc.Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Meas.Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Meas.Time" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Meas.Rdg" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="10%" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Valu.Code" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Text" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+										<header>
+											<Text text="Rdg.Taken By" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active"></ColumnListItem>
+								</items>
+							</Table>
+						</uxap:blocks>
+						<uxap:moreBlocks/>
+						<uxap:actions/>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="Attachments"  visible="true">
+						<uxap:blocks>
+					
+						<List id="UploadCollection" mode ="{oGlobalModel>/modeDelete}" delete="ci_handleDelete" itemPress="downListPress" enableBusyIndicator="true" headerText=""
+								noDataText="Use the &quot;Upload&quot; button for Upload the Documents" growing="true" visible="false" ></List>
+						</uxap:blocks>
+						<uxap:actions>
+							<u:FileUploader buttonText="Upload" visible="false" enabled="false" buttonOnly="true" icon="" name="myFileUpload" value=""
+								placeholder="Upload Attachment" change="_onFileUploaderChange" id="ci_fileUploader1"/>
+						</uxap:actions>
+					<!--</uxap:ObjectPageSubSection>-->
+					
+					
+					<!--<uxap:ObjectPageSubSection title="Attachments" id="one" visible="true">-->
+					<uxap:blocks>
+					<List id="UploadCollection1"  delete="ci_handleDelete" itemPress="downListPress" enableBusyIndicator="true" headerText=""
+					noDataText="No Attachment" growing="true"  visible="true" mode="{oGlobalModel>/modeDelete}"></List>
+					</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+					
+					<!--&quot;&quot;-->
+					
+					
+					
+					
+					
+				</uxap:subSections>
+				<uxap:customAnchorBarButton/>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+		<uxap:footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<!--<Button id="edit" text="Edit" type="Default" icon="sap-icon://edit" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>-->
+					<ToolbarSpacer width=""/>
+					<Button id="save" text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+						press="post"/>
+					<Button text="Cancel" iconFirst="false" type="Emphasized" enabled="true" visible="false" id="canc" press="cancelPress"/>
+					<Button id="edit" text="Edit" type="Emphasized" icon="" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onButtonPress"/>
+					<!--<Button id="funcl" text="Functional Location" iconFirst="false" type="Reject" enabled="true" visible="false" press="funcloc"/>	-->
+					<!--<Button id="equi" text="Equipment" iconFirst="false" type="Reject" enabled="true" visible="false" press="equip"/>	-->
+						
+				</content>
+			</OverflowToolbar>
+		</uxap:footer>
+	</uxap:ObjectPageLayout>
+</mvc:View>
